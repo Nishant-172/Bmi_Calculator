@@ -79,3 +79,27 @@ weight_label = tk.Label(root, text="Enter Weight (kg):", font=("Arial", 12), bg=
 weight_label.pack()
 weight_entry = tk.Entry(root, font=("Arial", 12))
 weight_entry.pack(pady=5)
+# Height entry (meters)
+height_label = tk.Label(root, text="Enter Height (m):", font=("Arial", 12), bg="lightgreen")
+height_label.pack()
+height_entry = tk.Entry(root, font=("Arial", 12))
+height_entry.pack(pady=5)
+
+# Calculate button
+calculate_button = tk.Button(root, text="Calculate BMI", font=("Arial", 12, "bold"), command=on_calculate)
+calculate_button.pack(pady=10)
+
+# Reset button
+reset_button = tk.Button(root, text="Reset", font=("Arial", 12), command=reset_fields)
+reset_button.pack(pady=5)
+
+# Result label for displaying BMI and category
+result_label = tk.Label(root, text="", font=("Arial", 14), bg="lightgreen")
+result_label.pack(pady=10)
+
+# Health tips label for additional advice based on BMI
+tip_label = tk.Label(root, text="", font=("Arial", 10), wraplength=350, bg="lightgreen")
+tip_label.pack(pady=5)
+
+# Start the GUI loop
+root.mainloop()
