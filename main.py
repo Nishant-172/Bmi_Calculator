@@ -45,16 +45,30 @@ def update_background_color(category):
 # Button function to calculate BMI and update display
 def on_calculate():
     try:
-        weight = float(weight_entry.get())  # User-input weight
-        height = float(height_entry.get())  # User-input height
+        # Get user-input weight and height values
+        weight = float(weight_entry.get())
+        height = float(height_entry.get())
+
+        # Check if weight and height are greater than zero
+        if weight <= 0:
+            messagebox.showerror("Error", "Weight must be a positive number!")
+            return
+        if height <= 0:
+            messagebox.showerror("Error", "Height must be a positive number!")
+            return
+
+        # Calculate BMI
         bmi = calculate_bmi(weight, height)
+        
+        # Proceed if BMI is calculated successfully
         if bmi is not None:
             category, tip = get_bmi_category(bmi)
-            update_background_color(category)  # Change background color based on BMI category
+            update_background_color(category)  # Update background color based on BMI category
             result_label.config(text=f"Your BMI: {bmi:.2f}\nCategory: {category}")
             tip_label.config(text=tip)
     except ValueError:
-        messagebox.showerror("Error", "Please enter valid numbers!")
+        messagebox.showerror("Error", "Please enter valid numeric values!")
+
 
 # Function to clear all input and reset UI
 def reset_fields():
